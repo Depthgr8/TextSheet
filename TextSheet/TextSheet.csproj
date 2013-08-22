@@ -54,6 +54,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -62,6 +65,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -72,6 +76,42 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fdf.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon_417.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon_70.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon_9.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon_297.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon_294.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon_210.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Data_26.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Data_22 - Copy.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon_148.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon_53.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon_475.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

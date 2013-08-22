@@ -1,0 +1,9 @@
+C:\Users\john\documents\visual studio 2010\Projects\TextSheet\TextSheet\bin\Debug\TextSheet.exe
+C:\Users\john\documents\visual studio 2010\Projects\TextSheet\TextSheet\bin\Debug\TextSheet.pdb
+C:\Users\john\documents\visual studio 2010\Projects\TextSheet\TextSheet\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\john\documents\visual studio 2010\Projects\TextSheet\TextSheet\obj\x86\Debug\TextSheet.Form1.resources
+C:\Users\john\documents\visual studio 2010\Projects\TextSheet\TextSheet\obj\x86\Debug\TextSheet.Properties.Resources.resources
+C:\Users\john\documents\visual studio 2010\Projects\TextSheet\TextSheet\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\john\documents\visual studio 2010\Projects\TextSheet\TextSheet\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\john\documents\visual studio 2010\Projects\TextSheet\TextSheet\obj\x86\Debug\TextSheet.exe
+C:\Users\john\documents\visual studio 2010\Projects\TextSheet\TextSheet\obj\x86\Debug\TextSheet.pdb
