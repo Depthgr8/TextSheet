@@ -1,0 +1,13 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../Github/TextSheet/TextSheet/Form1.cs">
+    <Files>
+      <File FileName="../../Github/TextSheet/TextSheet/Form1.cs" Line="33" Column="47" />
+      <File FileName="../../Github/TextSheet/TextSheet/Form1.cs" Line="191" Column="18" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
