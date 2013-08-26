@@ -19,7 +19,7 @@ namespace TextSheet___Beta
 
         private void savefile_Click(object sender, EventArgs e)
         {
-
+            saveTextSheet_Click(sender,e);
         }
 
         private void saveTextSheet_Click(object sender, EventArgs e)
@@ -247,6 +247,21 @@ namespace TextSheet___Beta
         private void gray_Click(object sender, EventArgs e)
         {
             reset_theme_Click(sender,e);
+        }
+
+        private void newfile_Click(object sender, EventArgs e)
+        {
+            newTextSheet_Click_1(sender,e);
+        }
+
+        private void newTextSheet_Click_1(object sender, EventArgs e)
+        {
+            refresh_Click(sender,e);
+        }
+
+        private void openfile_Click(object sender, EventArgs e)
+        {
+            openTextSheet_Click_1(sender, e);
         }
 
        

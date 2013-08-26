@@ -152,6 +152,7 @@
             this.newTextSheet.Name = "newTextSheet";
             this.newTextSheet.Size = new System.Drawing.Size(189, 22);
             this.newTextSheet.Text = "New TextSheet";
+            this.newTextSheet.Click += new System.EventHandler(this.newTextSheet_Click_1);
             // 
             // openTextSheet
             // 
@@ -462,6 +463,7 @@
             this.newfile.Size = new System.Drawing.Size(23, 22);
             this.newfile.Text = "toolStripButton2";
             this.newfile.ToolTipText = "New TextSheet";
+            this.newfile.Click += new System.EventHandler(this.newfile_Click);
             // 
             // openfile
             // 
@@ -472,6 +474,7 @@
             this.openfile.Size = new System.Drawing.Size(23, 22);
             this.openfile.Text = "toolStripButton3";
             this.openfile.ToolTipText = "Open TextSheet";
+            this.openfile.Click += new System.EventHandler(this.openfile_Click);
             // 
             // toolStripSeparator4
             // 
