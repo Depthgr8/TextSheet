@@ -42,4 +42,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
+####This wiki page includes common questions related to TextSheet application
+
+***
+
+
+* Why we are making it for **Windows** operating system ?
+* Windows is a popular though proprietary operating system that is being used by a large number of population all over the world. All Windows users need to use **MS-Office Excel** to create a spreadsheet if they have to save their text data in a tabular format but here We are making an _easy to use_ freeware windows application, implementing an attractive and very easy **G**raphical **U**ser **I**nterface.
+
+__________
 
