@@ -18,7 +18,7 @@ _________
  * To suggest me more contact me at depthgr8@yahoo.com
 
 _________
-###Licensing
+##Licensing
 
 The MIT License (MIT)
 
@@ -42,7 +42,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-####This wiki page includes common questions related to TextSheet application
+
+## FAQ Section
+
+###This wiki page includes common questions related to TextSheet application
 
 ***
 
