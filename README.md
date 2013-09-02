@@ -15,7 +15,7 @@ _________
 ###Notes
  * Please contribute to this open-source C# Application.
  * You can fork this public repository, but It would be better if you let me know that you want to work together.
- * To suggest me more contact me at depthgr8@yahoo.com
+ * To suggest me more contact me at depthgr8@yahoo.in
 
 _________
 ##Licensing
