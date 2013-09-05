@@ -28,7 +28,7 @@ namespace TextSheet___Beta
             {
                 int r, c;
                 SaveFileDialog sfd = new SaveFileDialog();
-                sfd.Filter = "DNS Files (*.dns)|*.dns";
+                sfd.Filter = "TXH Files (*txh.)|*.txh";
                 sfd.ShowDialog();
                 StreamWriter sw = new StreamWriter(sfd.FileName);
                 r = sheet_panel.RowCount;
@@ -133,7 +133,7 @@ namespace TextSheet___Beta
                 container_panel.Visible = true;
                 int r, c;
                 OpenFileDialog ofd = new OpenFileDialog();
-                ofd.Filter = "DNS Files (*.dns)|*.dns";
+                ofd.Filter = "DNS Files (*.txh)|*.txh";
                 ofd.ShowDialog();
                 StreamReader fo = new StreamReader(ofd.FileName);
                 row_box.Text = (fo.ReadLine()).ToString();
