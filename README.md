@@ -55,3 +55,7 @@ THE SOFTWARE.
 
 __________
 
+* Why to develop a new spreadsheet like application ?
+* Yes, why to develop a freeware application. This is not what we really think, learning is one of the key step in one's life for future opportunities. Just go ahead - Work with us, and show them up - What do you know.
+
+__________
