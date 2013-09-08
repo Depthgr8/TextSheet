@@ -43,14 +43,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
- +-----------------------------------------------------------------+</br>
- |             "THE COFFEE-WARE LICENSE" (Revision 1)     :)       |</br>
- |     As long as you retain this notice you can do whatever       |</br>
- |      you want with this application. If we meet some day,       |</br>
- | and you think this stuff is worth it, you can buy me a coffee.  |</br>
- +-----------------------------------------------------------------+</br>
-
-
 ## FAQ Section
 
 ###This wiki page includes common questions related to TextSheet application
