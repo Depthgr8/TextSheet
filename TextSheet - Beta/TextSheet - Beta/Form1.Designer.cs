@@ -1,4 +1,4 @@
-﻿namespace TextSheet___Beta
+﻿﻿namespace TextSheet___Beta
 {
     partial class Main_Form
     {
@@ -501,6 +501,7 @@
             this.encrypt_file.Size = new System.Drawing.Size(23, 22);
             this.encrypt_file.Text = "toolStripButton5";
             this.encrypt_file.ToolTipText = "Encrypt TextSheet";
+            this.encrypt_file.Click += new System.EventHandler(this.encrypt_file_Click);
             // 
             // decrypt_file
             // 
@@ -511,6 +512,7 @@
             this.decrypt_file.Size = new System.Drawing.Size(23, 22);
             this.decrypt_file.Text = "toolStripButton6";
             this.decrypt_file.ToolTipText = "Decrypt TextSheet";
+            this.decrypt_file.Click += new System.EventHandler(this.decrypt_file_Click);
             // 
             // toolStripSeparator5
             // 
