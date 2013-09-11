@@ -1,21 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="TextSheet - Beta/Form1.Designer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Disassembly">
     <Files>
-      <File FileName="TextSheet - Beta/Form1.cs" Line="375" Column="49" />
-      <File FileName="TextSheet - Beta/Form1.Designer.cs" Line="920" Column="51" />
+      <File FileName="Disassembly" />
     </Files>
-    <Pads>
-      <Pad Id="ClassPad">
-        <State expanded="True">
-          <Node name="TextSheet - Beta" expanded="True">
-            <Node name="TextSheet___Beta" expanded="True">
-              <Node name="TextSheet___Beta.Main_Form" expanded="True" selected="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

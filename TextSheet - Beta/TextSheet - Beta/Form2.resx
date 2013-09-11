@@ -117,36 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="Primary_Menu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>211, 17</value>
-  </metadata>
-  <metadata name="toolbar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>112, 17</value>
-  </metadata>
-  <metadata name="Status.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAEADw8AAAEAIADoAwAAFgAAACgAAAAPAAAAHgAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
-        /wD///8AAAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA////
-        /wD///8AAAAA/zClAN0wpQDdMKUA3QAAAP8wpQDdMKUA3TClAN0AAAD/MKUA3TClAN0wpQDdAAAA////
-        /wD///8AAAAA/zClAN0wpQDdMKUA3QAAAP8wpQDdMKUA3TClAN0AAAD/MKUA3TClAN0wpQDdAAAA////
-        /wD///8AAAAA/zClAN0wpQDdMKUA3QAAAP8wpQDdMKUA3TClAN0AAAD/MKUA3TClAN0wpQDdAAAA////
-        /wD///8AAAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA////
-        /wD///8AAAAA/wBo/9gAaP/YAGj/2AAAAP8AaP/YAGj/2ABo/9gAAAD/AGj/2ABo/9gAaP/YAAAA////
-        /wD///8AAAAA/wBo/9gAaP/YAGj/2AAAAP8AaP/YAGj/2ABo/9gAAAD/AGj/2ABo/9gAaP/YAAAA////
-        /wD///8AAAAA/wBo/9gAaP/YAGj/2AAAAP8AaP/YAGj/2ABo/9gAAAD/AGj/2ABo/9gAaP/YAAAA////
-        /wD///8AAAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA////
-        /wD///8AAAAA/+iiAP/oogD/6KIA/wAAAP/oogD/6KIA/+iiAP8AAAD/6KIA/+iiAP/oogD/AAAA////
-        /wD///8AAAAA/+iiAP/oogD/6KIA/wAAAP/oogD/6KIA/+iiAP8AAAD/6KIA/+iiAP/oogD/AAAA////
-        /wD///8AAAAA/+iiAP/oogD/6KIA/wAAAP/oogD/6KIA/+iiAP8AAAD/6KIA/+iiAP/oogD/AAAA////
-        /wD///8AAAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA////
-        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
-        /wD//gAAgAIAAIACAACAAgAAgAIAAIACAACAAgAAgAIAAIACAACAAgAAgAIAAIACAACAAgAAgAIAAP/+
-        AAA=
-</value>
-  </data>
 </root>

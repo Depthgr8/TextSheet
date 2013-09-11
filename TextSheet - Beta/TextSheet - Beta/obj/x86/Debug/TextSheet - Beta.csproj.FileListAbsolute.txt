@@ -12,7 +12,9 @@ C:\Users\john\Desktop\TextSheet - Beta\TextSheet - Beta\obj\x86\Debug\TextSheet 
 C:\Users\john\Desktop\TextSheet - Beta\TextSheet - Beta\bin\Debug\TextSheet - Beta.exe
 C:\Users\john\Desktop\TextSheet - Beta\TextSheet - Beta\bin\Debug\TextSheet - Beta.pdb
 C:\Users\john\Desktop\TextSheet - Beta\TextSheet - Beta\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\john\Desktop\TextSheet - Beta\TextSheet - Beta\obj\x86\Debug\TextSheet___Beta.Main_Form.resources
 C:\Users\john\Desktop\TextSheet - Beta\TextSheet - Beta\obj\x86\Debug\TextSheet___Beta.Properties.Resources.resources
 C:\Users\john\Desktop\TextSheet - Beta\TextSheet - Beta\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Users\john\Desktop\TextSheet - Beta\TextSheet - Beta\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\john\Desktop\TextSheet - Beta\TextSheet - Beta\obj\x86\Debug\TextSheet___Beta.Main_Form.resources
+C:\Users\john\Desktop\TextSheet - Beta\TextSheet - Beta\obj\x86\Debug\GenerateResource.read.565.tlog
+C:\Users\john\Desktop\TextSheet - Beta\TextSheet - Beta\obj\x86\Debug\TextSheet___Beta.Form2.resources
