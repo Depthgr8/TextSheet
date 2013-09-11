@@ -10,9 +10,12 @@ _________
  * TextSheet Application will be able to provide a secure file format `.txh` with encryption technologies.
  * TextSheet also provides themes of Primary Colors to make an attractive user interface.
  * TextSheet will be able to do calculation on the basis of given formula.
+ * TextSheet cares for your privacy problems, thus it has some cool features for your secrecy.
+ * TextSheet is now loaded with (Double Encrytion Technology) - With TextSheet v3.0
  
 _________
 ###Notes
+
  * Please contribute to this open-source C# Application.
  * You can fork this public repository, but It would be better if you let me know that you want to work together.
  * To suggest me more contact me at depthgr8@yahoo.in
