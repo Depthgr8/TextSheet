@@ -42,6 +42,10 @@ namespace TextSheet___Beta
                     sheet_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
                     textsheet_block.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
                 }
+                add_row.Enabled = false;
+                add_colm.Enabled = false;
+                del_row.Enabled = false;
+                del_colm.Enabled = false;
             }
             catch (Exception)
             {
@@ -147,7 +151,7 @@ namespace TextSheet___Beta
                         this.sheet_panel.Controls.Add(textBox1, k, j);
                         textBox1.Location = new System.Drawing.Point(1, 1);
                         textBox1.Name = k + "," + j;
-                        textBox1.Text = "";
+                        textBox1.Text = k+" "+j;
                         textBox1.Size = new System.Drawing.Size(100, 15);
                         textBox1.TabIndex = 0;
                         textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -161,6 +165,10 @@ namespace TextSheet___Beta
             row_box.Enabled = false;
             column_box.Enabled = false;
             draw.Enabled = false;
+            add_row.Enabled = true;
+            add_colm.Enabled = true;
+            del_row.Enabled = true;
+            del_colm.Enabled = true;
         }
 
 
@@ -250,6 +258,10 @@ namespace TextSheet___Beta
             InitializeComponent();
             toolbar.Enabled = true;
             container_panel.Visible = false;
+            add_row.Enabled = false;
+            add_colm.Enabled = false;
+            del_row.Enabled = false;
+            del_colm.Enabled = false;
         }
 
         private void exit_Click(object sender, EventArgs e)
@@ -551,6 +563,158 @@ namespace TextSheet___Beta
         {
             set_password_Click(sender,e);
         }
+
+        private void add_row_Click(object sender, EventArgs e)
+        {
+            int c = int.Parse(column_box.Text);
+            int r = int.Parse(row_box.Text);
+
+            column_panel.RowCount = r+1;
+            System.Windows.Forms.TextBox textboxcolumn;
+            textboxcolumn = new System.Windows.Forms.TextBox();
+            this.column_panel.Controls.Add(textboxcolumn, 0, r);
+            textboxcolumn.Location = new System.Drawing.Point(1, 1);
+            textboxcolumn.Name = "textboxcolumn" + "i";
+            textboxcolumn.Text = (r+1).ToString();
+            textboxcolumn.Size = new System.Drawing.Size(100, 15);
+            textboxcolumn.TabIndex = 0;
+            textboxcolumn.BackColor = System.Drawing.SystemColors.ControlLight;
+            textboxcolumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+           
+            for (int k = 0; k < c; k++)
+            {
+                sheet_panel.RowCount = r+1;
+                System.Windows.Forms.TextBox textBox1;
+                textBox1 = new System.Windows.Forms.TextBox();
+                this.sheet_panel.Controls.Add(textBox1, k, r);
+                textBox1.Location = new System.Drawing.Point(1, 1);
+                textBox1.Name = k + "," + c;
+                textBox1.Text = "";
+                textBox1.Size = new System.Drawing.Size(100, 15);
+                textBox1.TabIndex = 0;
+                textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            }
+            row_box.Text = (r + 1).ToString();
+        }
+
+        private void add_colm_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int c = int.Parse(column_box.Text);
+                int r = int.Parse(row_box.Text);
+                row_panel.ColumnCount = c + 1;
+                System.Windows.Forms.TextBox textboxcolumn;
+                textboxcolumn = new System.Windows.Forms.TextBox();
+                this.row_panel.Controls.Add(textboxcolumn, 0, c+1);
+                textboxcolumn.Location = new System.Drawing.Point(1, 1);
+                textboxcolumn.Name = "textboxcolumn" + "i";
+                textboxcolumn.Text = (c + 1).ToString();
+                textboxcolumn.Size = new System.Drawing.Size(100, 15);
+                textboxcolumn.TabIndex = 0;
+                textboxcolumn.BackColor = System.Drawing.SystemColors.ControlLight;
+                textboxcolumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+
+                sheet_panel.ColumnCount = c + 1;
+                for (int k = 0; k < r; k++)
+                {
+                    System.Windows.Forms.TextBox textBox1;
+                    textBox1 = new System.Windows.Forms.TextBox();
+                    this.sheet_panel.Controls.Add(textBox1, c, k);
+                    textBox1.Location = new System.Drawing.Point(1, 1);
+                    textBox1.Name = k + "," + c;
+                    textBox1.Text = "";
+                    textBox1.Size = new System.Drawing.Size(100, 15);
+                    textBox1.TabIndex = 0;
+                    textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+                }
+                column_box.Text = (c + 1).ToString();
+            }
+            catch (Exception) 
+            {
+            }
+        }
+
+        private void del_row_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                int c = int.Parse(column_box.Text);
+                int r = int.Parse(row_box.Text);
+
+                System.Windows.Forms.TextBox textboxcolumn;
+                textboxcolumn = new System.Windows.Forms.TextBox();
+                this.column_panel.Controls.RemoveAt(r-1);
+                textboxcolumn.Location = new System.Drawing.Point(1, 1);
+                textboxcolumn.Name = "textboxcolumn" + "i";
+                textboxcolumn.Text = (r + 1).ToString();
+                textboxcolumn.Size = new System.Drawing.Size(100, 15);
+                textboxcolumn.TabIndex = 0;
+                textboxcolumn.BackColor = System.Drawing.SystemColors.ControlLight;
+                textboxcolumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+
+                for (int k = 0; k < c; k++)
+                {
+
+                    System.Windows.Forms.TextBox textBox1;
+                    textBox1 = new System.Windows.Forms.TextBox();
+                    this.sheet_panel.Controls.RemoveAt(((r*c)-1)-k);
+                    textBox1.Location = new System.Drawing.Point(1, 1);
+                    textBox1.Name = k + "," + c;
+                    textBox1.Text = "";
+                    textBox1.Size = new System.Drawing.Size(100, 15);
+                    textBox1.TabIndex = 0;
+                    textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+                }
+                row_box.Text = (r - 1).ToString();
+            }
+            catch(Exception)
+            {
+
+            }
+        }
+
+        private void del_colm_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int c = int.Parse(column_box.Text);
+                int r = int.Parse(row_box.Text);
+
+                System.Windows.Forms.TextBox textboxrow;
+                textboxrow = new System.Windows.Forms.TextBox();
+                this.row_panel.Controls.RemoveAt(c - 1);
+                textboxrow.Location = new System.Drawing.Point(1, 1);
+                textboxrow.Name = "textboxrow" + "i";
+                textboxrow.Text = (r - 1).ToString();
+                textboxrow.Size = new System.Drawing.Size(100, 15);
+                textboxrow.TabIndex = 0;
+                textboxrow.BackColor = System.Drawing.SystemColors.ControlLight;
+                textboxrow.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+                for (int k = 0; k < r; k++)
+                {
+
+                    System.Windows.Forms.TextBox textBox1;
+                    textBox1 = new System.Windows.Forms.TextBox();
+                    this.sheet_panel.Controls.RemoveAt(((r * c)) - ((c * k) + 1));
+                    textBox1.Location = new System.Drawing.Point(1, 1);
+                    textBox1.Name = k + "," + c;
+                    textBox1.Text = "";
+                    textBox1.Size = new System.Drawing.Size(100, 15);
+                    textBox1.TabIndex = 0;
+                    textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+                }
+              
+                column_box.Text = (c - 1).ToString();
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+
 
 
     }
