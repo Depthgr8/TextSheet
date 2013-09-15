@@ -65,9 +65,9 @@ namespace TextSheet___Beta
             prompt.Controls.Add(confirmation);
             prompt.Controls.Add(textLable);
             prompt.Controls.Add(textbox);
+            textbox.UseSystemPasswordChar = true;
             prompt.ShowDialog();
             return textbox.Text;
-
         }
 
         private void savefile_Click(object sender, EventArgs e)
@@ -81,7 +81,7 @@ namespace TextSheet___Beta
             {
                 int r, c;
                 SaveFileDialog sfd = new SaveFileDialog();
-                sfd.Filter = "DNS Files (*.dns)|*.dns";
+                sfd.Filter = "TEXTSHEET Files (*.txh)|*.txh";
                 sfd.ShowDialog();
                 StreamWriter sw = new StreamWriter(sfd.FileName);
                 r = sheet_panel.RowCount;
@@ -101,7 +101,6 @@ namespace TextSheet___Beta
             {
             }
         }
-
         private void draw_Click(object sender, EventArgs e)
         {
             container_panel.Visible = true;
@@ -151,7 +150,7 @@ namespace TextSheet___Beta
                         this.sheet_panel.Controls.Add(textBox1, k, j);
                         textBox1.Location = new System.Drawing.Point(1, 1);
                         textBox1.Name = k + "," + j;
-                        textBox1.Text = k+" "+j;
+                        textBox1.Text = "";
                         textBox1.Size = new System.Drawing.Size(100, 15);
                         textBox1.TabIndex = 0;
                         textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -170,15 +169,11 @@ namespace TextSheet___Beta
             del_row.Enabled = true;
             del_colm.Enabled = true;
         }
-
-
-
         private void newTextSheet_Click(object sender, EventArgs e)
         {
             toolbar.Enabled = true;
             message.Text = "Please enter your desired number of columns and rows";
         }
-
         private void openTextSheet_Click_1(object sender, EventArgs e)
         {
             try
@@ -186,7 +181,7 @@ namespace TextSheet___Beta
                 container_panel.Visible = true;
                 int r, c;
                 OpenFileDialog ofd = new OpenFileDialog();
-                ofd.Filter = "DNS Files (*.dns)|*.dns";
+                ofd.Filter = "TEXTSHEET Files (*.txh)|*.txh";
                 ofd.ShowDialog();
                 StreamReader fo = new StreamReader(ofd.FileName);
                 row_box.Text = (fo.ReadLine()).ToString();
@@ -248,27 +243,30 @@ namespace TextSheet___Beta
             }
             message.Text = "Your SpreadSheet is now ready";
         }
-
         private void refresh_Click(object sender, EventArgs e)
         {
-            Primary_Menu.Dispose();
-            toolbar.Dispose();
-            container_panel.Dispose();
-            Status.Dispose();
-            InitializeComponent();
-            toolbar.Enabled = true;
-            container_panel.Visible = false;
-            add_row.Enabled = false;
-            add_colm.Enabled = false;
-            del_row.Enabled = false;
-            del_colm.Enabled = false;
+            try
+            {
+                Primary_Menu.Dispose();
+                toolbar.Dispose();
+                container_panel.Dispose();
+                Status.Dispose();
+                InitializeComponent();
+                toolbar.Enabled = true;
+                container_panel.Visible = false;
+                add_row.Enabled = false;
+                add_colm.Enabled = false;
+                del_row.Enabled = false;
+                del_colm.Enabled = false;
+            }
+            catch
+            {
+            }
         }
-
         private void exit_Click(object sender, EventArgs e)
         {
             Main_Form.ActiveForm.Close();
         }
-
         private void reset_theme_Click(object sender, EventArgs e)
         {
             row_panel.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -383,95 +381,101 @@ namespace TextSheet___Beta
 
         private void decrypt_file_Click(object sender, EventArgs e)
         {
-            FileStream fs = new FileStream(@"c:\Program Files\textsheet.txh", FileMode.Open, FileAccess.Read);
-            DESCryptoServiceProvider crypt = new DESCryptoServiceProvider();
-            crypt.Key = ASCIIEncoding.ASCII.GetBytes("TEXTSHET");
-            crypt.IV = ASCIIEncoding.ASCII.GetBytes("TEXTSHET");
-            CryptoStream cs = new CryptoStream(fs, crypt.CreateDecryptor(), CryptoStreamMode.Read);
-            StreamReader srd = new StreamReader(cs);
-            String match = srd.ReadLine().ToString();
-            srd.Close();
-            fs.Close();
-            String pwd = showdialog("Please Enter your password to decrypt a file","TextSheet - Security");
-            if (pwd == match)
+            try
             {
-                try
+                FileStream fs = new FileStream(@"c:\Program Files\textsheet.txh", FileMode.Open, FileAccess.Read);
+                DESCryptoServiceProvider crypt = new DESCryptoServiceProvider();
+                crypt.Key = ASCIIEncoding.ASCII.GetBytes("TEXTSHET");
+                crypt.IV = ASCIIEncoding.ASCII.GetBytes("TEXTSHET");
+                CryptoStream cs = new CryptoStream(fs, crypt.CreateDecryptor(), CryptoStreamMode.Read);
+                StreamReader srd = new StreamReader(cs);
+                String match = srd.ReadLine().ToString();
+                srd.Close();
+                fs.Close();
+                String pwd = showdialog("Please Enter your password to decrypt a file", "TextSheet - Security");
+                if (pwd == match)
                 {
-                    String key = pwd;
-                    container_panel.Visible = true;
-                    int r, c;
-                    OpenFileDialog ofd = new OpenFileDialog();
-                    ofd.Filter = "TEN Files (*.ten)|*.ten";
-                    ofd.ShowDialog();
-                    String fileName = ofd.FileName;
-                    FileStream fStream = new FileStream(ofd.FileName, FileMode.Open, FileAccess.Read);
-                    DESCryptoServiceProvider cryptic = new DESCryptoServiceProvider();
-                    cryptic.Key = ASCIIEncoding.ASCII.GetBytes(key);
-                    cryptic.IV = ASCIIEncoding.ASCII.GetBytes(key);
-                    CryptoStream crStream = new CryptoStream(fStream, cryptic.CreateDecryptor(), CryptoStreamMode.Read);
-                    StreamReader sr = new StreamReader(crStream);
-                    string row = sr.ReadLine();
-                    row_box.Text = row.ToString();
-                    string col = sr.ReadLine();
-                    column_box.Text = col.ToString();
-                    column_panel.RowCount = r = int.Parse(row_box.Text);
-                    column_panel.ColumnCount = c = int.Parse(column_box.Text);
-                    message.Text = "You can now enter your Data";
-                    for (int i = 0; i < c; i++)
+                    try
                     {
-                        row_panel.ColumnCount = c;
-                        System.Windows.Forms.TextBox textboxrow;
-                        textboxrow = new System.Windows.Forms.TextBox();
-                        this.row_panel.Controls.Add(textboxrow, i, 0);
-                        textboxrow.Location = new System.Drawing.Point(0, 0);
-                        textboxrow.Name = "textboxrow" + "i";
-                        textboxrow.Text = (sr.ReadLine()).ToString();
-                        textboxrow.Size = new System.Drawing.Size(100, 20);
-                        textboxrow.TabIndex = 0;
-                        textboxrow.BackColor = System.Drawing.SystemColors.ControlLight;
-                        textboxrow.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-                    }
-                    for (int i = 0; i < r; i++)
-                    {
-                        column_panel.RowCount = r;
-                        System.Windows.Forms.TextBox textboxcolumn;
-                        textboxcolumn = new System.Windows.Forms.TextBox();
-                        this.column_panel.Controls.Add(textboxcolumn, 0, i);
-                        textboxcolumn.Location = new System.Drawing.Point(0, 0);
-                        textboxcolumn.Name = "textboxcolumn" + "i";
-                        textboxcolumn.Text = (sr.ReadLine()).ToString();
-                        textboxcolumn.Size = new System.Drawing.Size(100, 20);
-                        textboxcolumn.TabIndex = 0;
-                        textboxcolumn.BackColor = System.Drawing.SystemColors.ControlLight;
-                        textboxcolumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-                    }
-                    int j = 0, k = 0;
-                    for (j = 0; j < r; j++)
-                    {
-                        for (k = 0; k < c; k++)
+                        String key = pwd;
+                        container_panel.Visible = true;
+                        int r, c;
+                        OpenFileDialog ofd = new OpenFileDialog();
+                        ofd.Filter = "TEN Files (*.ten)|*.ten";
+                        ofd.ShowDialog();
+                        String fileName = ofd.FileName;
+                        FileStream fStream = new FileStream(ofd.FileName, FileMode.Open, FileAccess.Read);
+                        DESCryptoServiceProvider cryptic = new DESCryptoServiceProvider();
+                        cryptic.Key = ASCIIEncoding.ASCII.GetBytes(key);
+                        cryptic.IV = ASCIIEncoding.ASCII.GetBytes(key);
+                        CryptoStream crStream = new CryptoStream(fStream, cryptic.CreateDecryptor(), CryptoStreamMode.Read);
+                        StreamReader sr = new StreamReader(crStream);
+                        string row = sr.ReadLine();
+                        row_box.Text = row.ToString();
+                        string col = sr.ReadLine();
+                        column_box.Text = col.ToString();
+                        column_panel.RowCount = r = int.Parse(row_box.Text);
+                        column_panel.ColumnCount = c = int.Parse(column_box.Text);
+                        message.Text = "You can now enter your Data";
+                        for (int i = 0; i < c; i++)
                         {
-                            sheet_panel.RowCount = r;
-                            sheet_panel.ColumnCount = c;
-                            System.Windows.Forms.TextBox textBox1;
-                            textBox1 = new System.Windows.Forms.TextBox();
-                            this.sheet_panel.Controls.Add(textBox1, k, j);
-                            textBox1.Location = new System.Drawing.Point(0, 0);
-                            textBox1.Name = k + "," + j;
-                            textBox1.Text = (sr.ReadLine()).ToString(); ;
-                            textBox1.Size = new System.Drawing.Size(100, 20);
-                            textBox1.TabIndex = 0;
-                            textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+                            row_panel.ColumnCount = c;
+                            System.Windows.Forms.TextBox textboxrow;
+                            textboxrow = new System.Windows.Forms.TextBox();
+                            this.row_panel.Controls.Add(textboxrow, i, 0);
+                            textboxrow.Location = new System.Drawing.Point(0, 0);
+                            textboxrow.Name = "textboxrow" + "i";
+                            textboxrow.Text = (sr.ReadLine()).ToString();
+                            textboxrow.Size = new System.Drawing.Size(100, 20);
+                            textboxrow.TabIndex = 0;
+                            textboxrow.BackColor = System.Drawing.SystemColors.ControlLight;
+                            textboxrow.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
                         }
+                        for (int i = 0; i < r; i++)
+                        {
+                            column_panel.RowCount = r;
+                            System.Windows.Forms.TextBox textboxcolumn;
+                            textboxcolumn = new System.Windows.Forms.TextBox();
+                            this.column_panel.Controls.Add(textboxcolumn, 0, i);
+                            textboxcolumn.Location = new System.Drawing.Point(0, 0);
+                            textboxcolumn.Name = "textboxcolumn" + "i";
+                            textboxcolumn.Text = (sr.ReadLine()).ToString();
+                            textboxcolumn.Size = new System.Drawing.Size(100, 20);
+                            textboxcolumn.TabIndex = 0;
+                            textboxcolumn.BackColor = System.Drawing.SystemColors.ControlLight;
+                            textboxcolumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+                        }
+                        int j = 0, k = 0;
+                        for (j = 0; j < r; j++)
+                        {
+                            for (k = 0; k < c; k++)
+                            {
+                                sheet_panel.RowCount = r;
+                                sheet_panel.ColumnCount = c;
+                                System.Windows.Forms.TextBox textBox1;
+                                textBox1 = new System.Windows.Forms.TextBox();
+                                this.sheet_panel.Controls.Add(textBox1, k, j);
+                                textBox1.Location = new System.Drawing.Point(0, 0);
+                                textBox1.Name = k + "," + j;
+                                textBox1.Text = (sr.ReadLine()).ToString(); ;
+                                textBox1.Size = new System.Drawing.Size(100, 20);
+                                textBox1.TabIndex = 0;
+                                textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+                            }
+                        }
+                        sr.Close();
+                        fStream.Close();
                     }
-                    sr.Close();
-                    fStream.Close();
+                    catch (Exception)
+                    {
+                    }
                 }
-                catch (Exception)
-                {
-                }
+                else
+                    MessageBox.Show("You entered a wrong password");
             }
-            else
-                MessageBox.Show("You entered a wrong password");
+            catch
+            {  
+            }  
         }
 
         private void encryptTextSheet_Click(object sender, EventArgs e)
@@ -486,17 +490,42 @@ namespace TextSheet___Beta
 
         private void about_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("TextSheet is a SpreadSheet like application");
+            MessageBox.Show(@"Welcome to the TextSheet wiki page
+
+
+TextSheet is a freeware application which you can use and develop freely on your Windows platform.
+
+TextSheet is a SpreadSheet like application, which will be able to create, edit, open and save your text data in a secure .TEN file format.
+Loading it with cool features like themes, preferences and encryption.
+
+Yes, we can work together that's why I made this repository public, It would be good if you let me know that you want to develop it with us, feel free to fork it and you can ask your queries at
+depthgr8@yahoo.in
+ ","About Texhsheet - Please leave a feedback for us");
         }
 
         private void help_me_Click(object sender, EventArgs e)
         {
-            close_browser.Visible = true;
-            urlbox.Visible = true;
-            urlbox.Text = "http://www.depthgr8.wordpress.com/textsheet-help";
-            container_panel.Visible = true;
-            webBrowser1.Visible = true;
-            webBrowser1.Navigate("http://www.depthgr8.wordpress.com/textsheet-help");  
+            MessageBox.Show(@"Welcome to the TextSheet wiki page
+
+To encrypt a file, you need to set a password
+
+You can set each file with a different password, for this you need to set your password everytime you want to encrypt a file.
+
+You will also need your password to decrypt a file. For more queries you can ask them on http://www.facebook.com/textsheet
+
+ ", "Texsheet Help center - Please leave a feedback for us");
+            try
+            {
+                close_browser.Visible = true;
+                urlbox.Visible = true;
+                urlbox.Text = "http://www.depthgr8.wordpress.com/2013/09/11/textsheet/";
+                container_panel.Visible = true;
+                webBrowser1.Visible = true;
+                webBrowser1.Navigate("http://www.depthgr8.wordpress.com/2013/09/11/textsheet/");
+            }
+            catch
+            {
+            }
         }
 
         private void help_credits_Click(object sender, EventArgs e)
@@ -507,22 +536,34 @@ namespace TextSheet___Beta
 
         private void feedback_Click(object sender, EventArgs e)
         {
-            close_browser.Visible = true;
-            urlbox.Visible = true;
-            urlbox.Text = "http://www.depthgr8.wordpress.com/textsheet";
-            container_panel.Visible = true;
-            webBrowser1.Visible = true;
-            webBrowser1.Navigate("http://www.depthgr8.wordpress.com/textsheet");  
+            try
+            {
+                close_browser.Visible = true;
+                urlbox.Visible = true;
+                urlbox.Text = "http://www.github.com/depthgr8/textsheet";
+                container_panel.Visible = true;
+                webBrowser1.Visible = true;
+                webBrowser1.Navigate("http://www.github.com/depthgr8/textsheet");
+            }
+            catch
+            {
+            }
         }
 
         private void show_support_Click(object sender, EventArgs e)
         {
-            close_browser.Visible = true;
-            urlbox.Visible = true;
-            urlbox.Text = "http://www.facebook.com/textsheet";
-            container_panel.Visible = true;
-            webBrowser1.Visible = true;
-            webBrowser1.Navigate("http://www.facebook.com/textsheet");  
+            try
+            {  
+                close_browser.Visible = true;
+                urlbox.Visible = true;
+                urlbox.Text = "http://www.facebook.com/textsheet";
+                container_panel.Visible = true;
+                webBrowser1.Visible = true;
+                webBrowser1.Navigate("http://www.facebook.com/textsheet");  
+            }  
+            catch
+            {
+            }
         }
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
@@ -532,13 +573,18 @@ namespace TextSheet___Beta
 
         private void close_browser_Click(object sender, EventArgs e)
         {
-            close_browser.Visible = false;
-            urlbox.Visible = false;
-            urlbox.Text = "http://www.github.com/depthgr8/textsheet";
-            container_panel.Visible = false;
-            webBrowser1.Visible = false;
+            try
+            {
+                close_browser.Visible = false;
+                urlbox.Visible = false;
+                urlbox.Text = "http://www.github.com/depthgr8/textsheet";
+                container_panel.Visible = false;
+                webBrowser1.Visible = false;
+            }
+            catch
+            {
+            }
         }
-
         private void preferences_Click(object sender, EventArgs e)
         {
             prefs_Click(sender,e);
@@ -546,17 +592,29 @@ namespace TextSheet___Beta
 
         private void set_password_Click(object sender, EventArgs e)
         {
-            Form2 f = new Form2();
-            f.ShowDialog(); 
+            try
+            {
+                Form2 f = new Form2();
+                f.ShowDialog();
+            }
+            catch
+            {
+            }
         }
 
         private void prefs_Click(object sender, EventArgs e)
         {
-            StreamWriter sw = new StreamWriter(@"c:\Program Files\textsheet.config");
-            String default_theme = showdialog("You can set your theme here, choose from\n\n 1.  Red\n 2.  Green\n 3.  Blue\n","Set preferences");
-            sw.WriteLine(default_theme);
-            sw.Flush();
-            sw.Close();
+            try
+            {
+                StreamWriter sw = new StreamWriter(@"c:\Program Files\textsheet.config");
+                String default_theme = showdialog("You can set your theme here, choose from\n\n 1.  Red\n 2.  Green\n 3.  Blue\n", "Set preferences");
+                sw.WriteLine(default_theme);
+                sw.Flush();
+                sw.Close();
+            }
+            catch
+            {
+            }
         }
 
         private void password_Click(object sender, EventArgs e)
@@ -566,35 +624,40 @@ namespace TextSheet___Beta
 
         private void add_row_Click(object sender, EventArgs e)
         {
-            int c = int.Parse(column_box.Text);
-            int r = int.Parse(row_box.Text);
-
-            column_panel.RowCount = r+1;
-            System.Windows.Forms.TextBox textboxcolumn;
-            textboxcolumn = new System.Windows.Forms.TextBox();
-            this.column_panel.Controls.Add(textboxcolumn, 0, r);
-            textboxcolumn.Location = new System.Drawing.Point(1, 1);
-            textboxcolumn.Name = "textboxcolumn" + "i";
-            textboxcolumn.Text = (r+1).ToString();
-            textboxcolumn.Size = new System.Drawing.Size(100, 15);
-            textboxcolumn.TabIndex = 0;
-            textboxcolumn.BackColor = System.Drawing.SystemColors.ControlLight;
-            textboxcolumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-           
-            for (int k = 0; k < c; k++)
+            try
             {
-                sheet_panel.RowCount = r+1;
-                System.Windows.Forms.TextBox textBox1;
-                textBox1 = new System.Windows.Forms.TextBox();
-                this.sheet_panel.Controls.Add(textBox1, k, r);
-                textBox1.Location = new System.Drawing.Point(1, 1);
-                textBox1.Name = k + "," + c;
-                textBox1.Text = "";
-                textBox1.Size = new System.Drawing.Size(100, 15);
-                textBox1.TabIndex = 0;
-                textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+                int c = int.Parse(column_box.Text);
+                int r = int.Parse(row_box.Text);
+
+                column_panel.RowCount = r + 1;
+                System.Windows.Forms.TextBox textboxcolumn;
+                textboxcolumn = new System.Windows.Forms.TextBox();
+                this.column_panel.Controls.Add(textboxcolumn, 0, r);
+                textboxcolumn.Location = new System.Drawing.Point(1, 1);
+                textboxcolumn.Name = "textboxcolumn" + "i";
+                textboxcolumn.Text = (r + 1).ToString();
+                textboxcolumn.Size = new System.Drawing.Size(100, 15);
+                textboxcolumn.TabIndex = 0;
+                textboxcolumn.BackColor = System.Drawing.SystemColors.ControlLight;
+                textboxcolumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+                sheet_panel.RowCount = r + 1;
+                for (int k = 0; k < c; k++)
+                {
+                    System.Windows.Forms.TextBox textBox1;
+                    textBox1 = new System.Windows.Forms.TextBox();
+                    this.sheet_panel.Controls.Add(textBox1, k, r);
+                    textBox1.Location = new System.Drawing.Point(1, 1);
+                    textBox1.Name = k + "," + c;
+                    textBox1.Text = "";
+                    textBox1.Size = new System.Drawing.Size(100, 15);
+                    textBox1.TabIndex = 0;
+                    textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+                }
+                row_box.Text = (r + 1).ToString();
             }
-            row_box.Text = (r + 1).ToString();
+            catch 
+            {
+            }
         }
 
         private void add_colm_Click(object sender, EventArgs e)
@@ -606,7 +669,7 @@ namespace TextSheet___Beta
                 row_panel.ColumnCount = c + 1;
                 System.Windows.Forms.TextBox textboxcolumn;
                 textboxcolumn = new System.Windows.Forms.TextBox();
-                this.row_panel.Controls.Add(textboxcolumn, 0, c+1);
+                this.row_panel.Controls.Add(textboxcolumn, 0, c);
                 textboxcolumn.Location = new System.Drawing.Point(1, 1);
                 textboxcolumn.Name = "textboxcolumn" + "i";
                 textboxcolumn.Text = (c + 1).ToString();
@@ -637,12 +700,10 @@ namespace TextSheet___Beta
 
         private void del_row_Click(object sender, EventArgs e)
         {
-
             try
             {
                 int c = int.Parse(column_box.Text);
                 int r = int.Parse(row_box.Text);
-
                 System.Windows.Forms.TextBox textboxcolumn;
                 textboxcolumn = new System.Windows.Forms.TextBox();
                 this.column_panel.Controls.RemoveAt(r-1);
@@ -653,13 +714,12 @@ namespace TextSheet___Beta
                 textboxcolumn.TabIndex = 0;
                 textboxcolumn.BackColor = System.Drawing.SystemColors.ControlLight;
                 textboxcolumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-
+                column_panel.RowCount = r - 1;
                 for (int k = 0; k < c; k++)
                 {
-
                     System.Windows.Forms.TextBox textBox1;
                     textBox1 = new System.Windows.Forms.TextBox();
-                    this.sheet_panel.Controls.RemoveAt(((r*c)-1)-k);
+                    this.sheet_panel.Controls.RemoveAt(((r*c)-k)-1);
                     textBox1.Location = new System.Drawing.Point(1, 1);
                     textBox1.Name = k + "," + c;
                     textBox1.Text = "";
@@ -667,6 +727,7 @@ namespace TextSheet___Beta
                     textBox1.TabIndex = 0;
                     textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
                 }
+                sheet_panel.RowCount = r - 1;
                 row_box.Text = (r - 1).ToString();
             }
             catch(Exception)
@@ -681,7 +742,7 @@ namespace TextSheet___Beta
             {
                 int c = int.Parse(column_box.Text);
                 int r = int.Parse(row_box.Text);
-
+                row_panel.ColumnCount = c - 1;
                 System.Windows.Forms.TextBox textboxrow;
                 textboxrow = new System.Windows.Forms.TextBox();
                 this.row_panel.Controls.RemoveAt(c - 1);
@@ -694,7 +755,6 @@ namespace TextSheet___Beta
                 textboxrow.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
                 for (int k = 0; k < r; k++)
                 {
-
                     System.Windows.Forms.TextBox textBox1;
                     textBox1 = new System.Windows.Forms.TextBox();
                     this.sheet_panel.Controls.RemoveAt(((r * c)) - ((c * k) + 1));
@@ -704,18 +764,12 @@ namespace TextSheet___Beta
                     textBox1.Size = new System.Drawing.Size(100, 15);
                     textBox1.TabIndex = 0;
                     textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-                }
-              
+                }              
                 column_box.Text = (c - 1).ToString();
             }
             catch (Exception)
             {
-
             }
         }
-
-
-
-
     }
 }
