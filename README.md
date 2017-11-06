@@ -1,11 +1,11 @@
-#TextSheet
+# TextSheet
 =========
-###Your pure C# based SpreadSheet like application
+### Your pure C# based SpreadSheet like application
  
 This repository contains open source C# codes for a SpreadSheet like application.
 This application will be able to generate multiple Textbox in a table layout there you can create, edit and save your data.
 _________
-###Other features
+### Other features
  
  * TextSheet Application will be able to provide a secure file format `.txh` with encryption technologies.
  * TextSheet also provides themes of Primary Colors to make an attractive user interface.
@@ -13,14 +13,14 @@ _________
  * TextSheet cares for your privacy problems, thus it has some cool features for your secrecy.
  * TextSheet is now loaded with (Double Encrytion Technology) - With TextSheet v3.0
 _________
-###Notes
+### Notes
 
  * Please contribute to this open-source C# Application.
  * You can fork this public repository, but It would be better if you let me know that you want to work together.
  * To suggest me more contact me at depthgr8@yahoo.in
 
 _________
-##Licensing
+## Licensing
 
 The MIT License (MIT)
 
@@ -47,7 +47,7 @@ THE SOFTWARE.
 
 ## FAQ Section
 
-###This wiki page includes common questions related to TextSheet application
+### This wiki page includes common questions related to TextSheet application
 
 ***
 
